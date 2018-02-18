@@ -7,7 +7,7 @@ export class Shelf extends React.Component {
       var rows = [], i = 0, n_books = 24;
       while (++i <= n_books) rows.push(i);
 
-      return (<div style={{"background-color": this.props.color}}>
+      return (<div style={{"backgroundColor": this.props.color}}>
           <div>{this.props.name}</div>
                 {rows.map(function (i) {
           return <Book key={i} index={i} title={"Book "+i} />;

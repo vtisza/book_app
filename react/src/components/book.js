@@ -5,7 +5,7 @@ export class Book extends React.Component {
       return (<div className="bookStyle">
                 {this.props.title} <br /><br />
 
-                <div style={{"text-align": "center"}}>
+                <div style={{"textAlign": "center"}}>
                   <button  className="btn buttonStylee">
                     <span className="glyphicon glyphicon-thumbs-up"></span>
                   </button>
