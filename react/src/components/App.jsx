@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {AutoCompleteControlled} from './components/autocomplete';
-import {Shelf} from './components/shelf';
+import AutoCompleteControlled from './autocomplete';
+import {Shelf} from './shelf';
 
 
     class App extends React.Component {

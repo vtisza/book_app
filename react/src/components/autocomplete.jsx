@@ -5,13 +5,17 @@ import Header from 'grommet/components/Header';
 import Box from 'grommet/components/Box';
 import Chip from 'material-ui/Chip';
 import {Shelf} from './shelf';
+import { connect } from 'react-redux';
 
 
-export class AutoCompleteControlled extends Component {
+
+class AutoCompleteControlled extends Component {
     constructor(props) {
       super(props);
-      this.state = { recommended:[], searchText:"", books:[ {key: 0, label: 'Gárdonyi Géza: Egri csillagok', rating: 5},
-        {key: 1, label: 'Szerb Antal: Utas és holdvilág', rating: 5}], };
+  //     this.state = { recommended:[], searchText:"",      
+  //     books:[ {key: 0, label: 'Gárdonyi Géza: Egri csillagok', rating: 5},
+  //       {key: 1, label: 'Szerb Antal: Utas és holdvilág', rating: 5}],
+  // };
   
       this.styles = {
         chip: {
@@ -92,7 +96,7 @@ export class AutoCompleteControlled extends Component {
            onUpdateInput={this.handleUpdateInput}
            onNewRequest={this.handleNewRequest}
            filter={AutoComplete.caseInsensitiveFilter}
-           dataSource={this.state.recommended}
+           dataSource={this.props.recommended}
            openOnFocus={true}
            fullWidth={true}
          />
@@ -101,10 +105,21 @@ export class AutoCompleteControlled extends Component {
       </Header>
       <MuiThemeProvider>
         <div style={this.styles.wrapper}>
-          {this.state.books.map(this.renderChip, this)}
+          {this.props.books.map(this.renderChip, this)}
         </div>
       </MuiThemeProvider>
     </div>
           );
         }
-      }
+      };
+
+const mapStateToProps = state => {
+ return {
+ books: state.books,
+ recommended: state.recommended,
+ searchText: state.searchText
+ }
+}
+export default connect(
+ mapStateToProps
+)(AutoCompleteControlled);
